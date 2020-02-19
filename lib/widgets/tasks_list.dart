@@ -11,12 +11,19 @@ class TasksList extends StatefulWidget {
 class _TasksListState extends State<TasksList> {
   List<Task> tasks = [
     Task(name: "Esta é uma tarefa"),
+    Task(name: "Esta é outra tarefa")
   ];
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder: tasks.map((task) => TaskTile(isChecked: task.isDone,)),
+      itemCount: tasks.length,
+      itemBuilder: (context, index) {
+        return TaskTile(
+          taskName: tasks[index].name,
+          isChecked: tasks[index].isDone,
+        );
+      },
     );
   }
 }
