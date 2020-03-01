@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tiodolixo/models/task_data.dart';
+
 import 'package:tiodolixo/screens/add_task_screen.dart';
 import 'package:tiodolixo/widgets/tasks_list.dart';
 
@@ -44,6 +47,7 @@ class TasksScreen extends StatelessWidget {
                   radius: 30.0,
                   child: Icon(
                     Icons.list,
+                    color: Colors.lightBlueAccent,
                     size: 30.0,
                   ),
                 ),
@@ -58,7 +62,7 @@ class TasksScreen extends StatelessWidget {
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  "12 Tarefas",
+                  '${Provider.of<TaskData>(context).count} Tarefas',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,

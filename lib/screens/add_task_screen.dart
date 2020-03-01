@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tiodolixo/models/task.dart';
+import 'package:tiodolixo/models/task_data.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  final _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,6 +31,8 @@ class AddTaskScreen extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              controller: _controller,
+              cursorColor: Colors.lightBlueAccent,
             ),
             SizedBox(
               height: 20.0,
@@ -37,7 +44,10 @@ class AddTaskScreen extends StatelessWidget {
                 color: Colors.lightBlueAccent,
                 textColor: Colors.white,
                 child: Text("Criar"),
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<TaskData>(context, listen: false).addTask(Task(name: _controller.text));
+                  Navigator.pop(context);
+                },
               ),
             )
           ],
